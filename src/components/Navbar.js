@@ -1,7 +1,11 @@
 import React from "react"; 
 import { Link } from 'react-router-dom';
+//import { useContext } from 'react';
+//import UserContext from "../context";
 
 function Navbar() {
+    //const user = useContext(UserContext);
+
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
@@ -17,8 +21,12 @@ function Navbar() {
                         <li className="nav-item">
                             <Link to="/employees"><span className="nav-link" >Employees</span></Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="/students"><span className="nav-link">Students</span></Link>
+                        </li>
                     </ul>
                 </div>
+                {/* <div className="float-right">{user.name} {user.role}</div> */}
             </div>
         </nav>
     )

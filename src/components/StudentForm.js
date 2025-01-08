@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import { createStudent, updateStudent } from "../redux/StudentsReducer";
 
-function EmployeeForm() {
+function StudentForm() {
     const params = useParams();
     const [state, setState] = useState({
         id: '',
@@ -11,42 +12,28 @@ function EmployeeForm() {
         mobile: ''
     });
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { students, loading, error } = useSelector((state) => state.students);
 
     useEffect(()=>{
         //state.id=params.id;
         if(params.id) {
-            axios.get('http://localhost:8080/students/'+params.id)
-            .then((res) => {
-                console.log(res);
-                setState(res.data.student);
-            })
-            .catch((error) => {
-                console.log(error);
+            const student = students.find((stu) => {
+                return Number(stu.id) === Number(params.id);
             });
+            setState(student);
         }
-    }, [params]);
+    }, [params, dispatch]);
     
     const submitEmployee = (event) => {
         event.preventDefault();
         if(params.id) {
-            axios.put('http://localhost:8080/students/'+params.id, state)
-            .then((res) => {
-                console.log(res);
-                navigate("/employees", { replace: true });
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+            dispatch(updateStudent({id: params.id, ...state}));
+            navigate('/students');
         }
         else {
-            axios.post('http://localhost:8080/student', state)
-            .then((res) => {
-                console.log(res);
-                navigate('/employees', { replace: true });
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+            dispatch(createStudent(state));
+            navigate('/students');
         }
     };
 
@@ -54,19 +41,19 @@ function EmployeeForm() {
         <form>
             <div className="form-group">
                 <label htmlFor="formControlInput1">ID</label>
-                <input type="id" className="form-control" value={state.id} onChange={(e)=>setState({...state, id: e.target.value})} id="formControlInput1" placeholder="ID" disabled={Number(params.id)>0}/>
+                <input type="id" className="form-control" value={state?.id} onChange={(e)=>setState({...state, id: e.target.value})} id="formControlInput1" placeholder="ID" disabled={Number(params.id)>0}/>
             </div>
             <div className="form-group">
                 <label htmlFor="formControlInput1">Name</label>
-                <input type="name" className="form-control" value={state.name} onChange={(e)=>setState({...state, name: e.target.value})} id="formControlInput1" placeholder="Name"/>
+                <input type="name" className="form-control" value={state?.name} onChange={(e)=>setState({...state, name: e.target.value})} id="formControlInput1" placeholder="Name"/>
             </div>
             <div className="form-group">
                 <label htmlFor="formControlInput2">Mobile</label>
-                <input type="email" className="form-control" value={state.email} onChange={(e)=>setState({...state, email: e.target.value})} id="formControlInput2" placeholder="name@example.com" />
+                <input type="email" className="form-control" value={state?.email} onChange={(e)=>setState({...state, email: e.target.value})} id="formControlInput2" placeholder="name@example.com" />
             </div>
             <div className="form-group">
                 <label htmlFor="formControlInput3">Email</label>
-                <input type="mobile" className="form-control" value={state.mobile} onChange={(e)=>setState({...state, mobile: e.target.value})} id="formControlInput3" placeholder="9876543210"/>
+                <input type="mobile" className="form-control" value={state?.mobile} onChange={(e)=>setState({...state, mobile: e.target.value})} id="formControlInput3" placeholder="9876543210"/>
             </div>
             <div className="form-group">
                 <label htmlFor="formControlSelect2">Example multiple select</label>
@@ -87,4 +74,4 @@ function EmployeeForm() {
     )
 }
 
-export default EmployeeForm;
+export default StudentForm;
