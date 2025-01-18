@@ -44,20 +44,20 @@ function StudentForm() {
                 <input type="id" className="form-control" value={state?.id} onChange={(e)=>setState({...state, id: e.target.value})} id="formControlInput1" placeholder="ID" disabled={Number(params.id)>0}/>
             </div>
             <div className="form-group">
-                <label htmlFor="formControlInput1">Name</label>
-                <input type="name" className="form-control" value={state?.name} onChange={(e)=>setState({...state, name: e.target.value})} id="formControlInput1" placeholder="Name"/>
-            </div>
-            <div className="form-group">
-                <label htmlFor="formControlInput2">Mobile</label>
-                <input type="email" className="form-control" value={state?.email} onChange={(e)=>setState({...state, email: e.target.value})} id="formControlInput2" placeholder="name@example.com" />
+                <label htmlFor="formControlInput2">Name</label>
+                <input type="name" className="form-control" value={state?.name} onChange={(e)=>setState({...state, name: e.target.value})} id="formControlInput2" placeholder="Name"/>
             </div>
             <div className="form-group">
                 <label htmlFor="formControlInput3">Email</label>
+                <input type="email" className="form-control" value={state?.email} onChange={(e)=>setState({...state, email: e.target.value})} id="formControlInput2" placeholder="name@example.com" />
+            </div>
+            <div className="form-group">
+                <label htmlFor="formControlInput3">Mobile</label>
                 <input type="mobile" className="form-control" value={state?.mobile} onChange={(e)=>setState({...state, mobile: e.target.value})} id="formControlInput3" placeholder="9876543210"/>
             </div>
             <div className="form-group">
-                <label htmlFor="formControlSelect2">Example multiple select</label>
-                <select multiple className="form-control" id="formControlSelect2">
+                <label htmlFor="formControlSelect1">Example multiple select</label>
+                <select multiple className="form-control" id="formControlSelect1">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>

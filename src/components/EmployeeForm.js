@@ -39,7 +39,7 @@ function EmployeeForm() {
             });
         }
         else {
-            axios.post('http://localhost:8080/student', state)
+            axios.post('http://localhost:8080/students', state)
             .then((res) => {
                 console.log(res);
                 navigate('/employees', { replace: true });
