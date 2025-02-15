@@ -10,6 +10,8 @@ const EmployeeList = lazy(() => import('./components/EmployeeList'));
 const EmployeeForm = lazy(() => import('./components/EmployeeForm'));
 const StudentList = lazy(() => import('./components/StudentList'));
 const StudentForm = lazy(() => import('./components/StudentForm'));
+const InlineCRUD = lazy(() => import('./components/InlineCRUD'));
+const StopWatch = lazy(() => import('./components/StopWatch'));
 import store from './redux/store';
 import { Provider } from 'react-redux';
 //import { useState } from 'react';
@@ -36,6 +38,8 @@ const App = () => {
                 <Route path="/students" element={<StudentList />} />
                 <Route path="/students/add" element={<StudentForm />} />
                 <Route path="/students/:id" element={<StudentForm />} />
+                <Route path="/inlinecrud" element={<InlineCRUD />} />
+                <Route path="/stopwatch" element={<StopWatch />} />
               </Routes>
             {/*</Suspense>}>*/}
           </Router>

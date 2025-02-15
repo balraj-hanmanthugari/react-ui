@@ -24,6 +24,12 @@ function Navbar() {
                         <li className="nav-item">
                             <Link to="/students"><span className="nav-link">Students</span></Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="/inlinecrud"><span className="nav-link">Inline CRUD</span></Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/stopwatch"><span className="nav-link">Stop Watch</span></Link>
+                        </li>
                     </ul>
                 </div>
                 {/* <div className="float-right">{user.name} {user.role}</div> */}
