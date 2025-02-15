@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
         import './style.css';
         
         export default function App() {
-          const [state, setState] = useState(10);
+          const [state, setState] = useState(0);
           const [color, setColor] = useState({
             background: 'green',
           });
@@ -10,7 +10,7 @@ import React, { useState, useEffect } from 'react';
         
           const setBackgroundColor = () => {
             setColor({
-              background: state <= 6 ? 'red' : 'green',
+              background: state > 5 ? 'red' : 'green',
             });
           };
         
@@ -18,15 +18,12 @@ import React, { useState, useEffect } from 'react';
             if (timerAction === 'pause') {
               return;
             } else if (timerAction === 'reset') {
-              setState(10);
+              setState(0);
               setBackgroundColor();
               return;
             }
-            if (state === 0) {
-              return;
-            }
             const interval = setInterval(() => {
-              setState(state - 1);
+              setState(state + 1);
               setBackgroundColor();
             }, 1000);
             return () => {
