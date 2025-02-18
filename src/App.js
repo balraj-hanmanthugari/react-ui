@@ -14,6 +14,7 @@ const InlineCRUD = lazy(() => import('./components/InlineCRUD'));
 const StopWatch = lazy(() => import('./components/StopWatch'));
 import store from './redux/store';
 import { Provider } from 'react-redux';
+import Cards from './components/Cards';
 //import { useState } from 'react';
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
                 <Route path="/students/:id" element={<StudentForm />} />
                 <Route path="/inlinecrud" element={<InlineCRUD />} />
                 <Route path="/stopwatch" element={<StopWatch />} />
+                <Route path="/cards" element={<Cards />} />
               </Routes>
             {/*</Suspense>}>*/}
           </Router>

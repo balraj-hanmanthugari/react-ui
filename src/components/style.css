@@ -1,0 +1,22 @@
+.product-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .card-container .card-title {
+    font-size: 18px;
+  }
+  
+  .card-container img {
+    width: 15rem;
+    height: 250px;
+  }
+  

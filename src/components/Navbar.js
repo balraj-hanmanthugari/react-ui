@@ -30,6 +30,9 @@ function Navbar() {
                         <li className="nav-item">
                             <Link to="/stopwatch"><span className="nav-link">Stop Watch</span></Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="/cards"><span className="nav-link">Cards</span></Link>
+                        </li>
                     </ul>
                 </div>
                 {/* <div className="float-right">{user.name} {user.role}</div> */}
